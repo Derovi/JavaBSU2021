@@ -4,33 +4,32 @@ import by.polchernikova.quizer.Task;
 import by.polchernikova.quizer.TaskGenerator;
 import by.polchernikova.quizer.exceptions.NothingToGenerateException;
 import by.polchernikova.quizer.task.math_tasks.ExpressionMathTask;
+import by.polchernikova.quizer.task.math_tasks.MathTask.Operation;
 
+import java.util.EnumSet;
 import java.util.Vector;
 
 public abstract class AbstractMathTaskGenerator implements TaskGenerator {
     public AbstractMathTaskGenerator(
             double minNumber,
             double maxNumber,
-            boolean generateSum,
-            boolean generateDifference,
-            boolean generateMultiplication,
-            boolean generateDivision,
+            EnumSet<Operation> opers,
             int precision
     ) {
-        if(!generateDifference && !generateDivision && !generateSum && !generateMultiplication) {
+        if(opers.isEmpty()) {
             throw new NothingToGenerateException("No operations are allowed");
         }
         operations = new Vector<String>();
-        if(generateSum) {
+        if(opers.contains(Operation.SUM)) {
             operations.add("+");
         }
-        if(generateDifference) {
+        if(opers.contains(Operation.DIFFERENCE)) {
             operations.add("-");
         }
-        if(generateMultiplication) {
+        if(opers.contains(Operation.MULTIPLICATION)) {
             operations.add("*");
         }
-        if(generateDivision) {
+        if(opers.contains(Operation.DIVISION)) {
             operations.add("/");
         }
         if(minNumber > maxNumber) {

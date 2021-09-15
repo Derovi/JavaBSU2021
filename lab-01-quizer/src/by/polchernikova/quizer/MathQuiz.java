@@ -8,15 +8,15 @@ import java.util.*;
 public class MathQuiz {
     static Map<String, Quiz> getQuizMap() {
         Map<String, Quiz> quizMap = new HashMap<String, Quiz>();
-        EquationMathTaskGenerator easy_equation_gen = new EquationMathTaskGenerator(1, 5, true, true, false, false, 0);
-        ExpressionMathTaskGenerator easy_expression_gen = new ExpressionMathTaskGenerator(1, 5, true, true, false, false, 0);
+        EquationMathTaskGenerator easy_equation_gen = new EquationMathTaskGenerator(1, 5, EnumSet.of(MathTask.Operation.SUM, MathTask.Operation.DIFFERENCE), 0);
+        ExpressionMathTaskGenerator easy_expression_gen = new ExpressionMathTaskGenerator(1, 5, EnumSet.of(MathTask.Operation.SUM, MathTask.Operation.DIFFERENCE), 0);
         quizMap.put("EASY TEST", new Quiz(new GroupTaskGenerator(easy_equation_gen, easy_expression_gen), 5));
 
-        EquationMathTaskGenerator hard_equation_gen = new EquationMathTaskGenerator(-4.0, 9.0, true, true, true, true, 1);
-        ExpressionMathTaskGenerator hard_expression_gen = new ExpressionMathTaskGenerator(-9.0, 4.0, true, true, true, true, 1);
+        EquationMathTaskGenerator hard_equation_gen = new EquationMathTaskGenerator(-4.0, 9.0, EnumSet.allOf(MathTask.Operation.class), 1);
+        ExpressionMathTaskGenerator hard_expression_gen = new ExpressionMathTaskGenerator(-9.0, 4.0,  EnumSet.allOf(MathTask.Operation.class), 1);
         quizMap.put("HARD TEST", new Quiz(new GroupTaskGenerator(hard_equation_gen, hard_expression_gen), 10));
 
-        quizMap.put("SENSELESS PRECISION TEST", new Quiz(new EquationMathTaskGenerator(-5, 5, true, true, true, true, 10), 5));
+        quizMap.put("SENSELESS PRECISION TEST", new Quiz(new EquationMathTaskGenerator(-5, 5,  EnumSet.allOf(MathTask.Operation.class), 10), 5));
 
         ExpressionMathTask task1 = new ExpressionMathTask(0, 2, "+", 0);
         ExpressionMathTask task2 = new ExpressionMathTask(1, 1, "+", 0);
