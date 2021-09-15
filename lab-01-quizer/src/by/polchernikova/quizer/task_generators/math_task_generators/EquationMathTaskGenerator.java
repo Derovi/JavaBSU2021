@@ -1,18 +1,15 @@
 package by.polchernikova.quizer.task_generators.math_task_generators;
 
-import by.polchernikova.quizer.Task;
-import by.polchernikova.quizer.TaskGenerator;
-import by.polchernikova.quizer.task.TextTask;
-import java.util.*;
-import java.lang.Math;
-
-public abstract class EquationMathTaskGenerator extends AbstractMathTaskGenerator {
-    public EquationMathTaskGenerator(
+public class EquationMathTaskGenerator extends AbstractMathTaskGenerator {
+    public EquationMathTaskGenerator (
+            double minNumber,
+            double maxNumber,
             boolean generateSum,
             boolean generateDifference,
             boolean generateMultiplication,
-            boolean generateDivision
+            boolean generateDivision,
+            int precision
     ) {
-        super(generateSum, generateDifference, generateMultiplication, generateDivision);
+        super(minNumber, maxNumber, generateSum, generateDifference, generateMultiplication, generateDivision, precision);
     }
 }
