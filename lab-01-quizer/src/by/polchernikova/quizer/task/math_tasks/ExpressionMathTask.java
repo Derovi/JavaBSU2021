@@ -1,7 +1,5 @@
 package by.polchernikova.quizer.task.math_tasks;
 
-import by.polchernikova.quizer.Result;
-
 import java.util.EnumSet;
 import java.util.Objects;
 

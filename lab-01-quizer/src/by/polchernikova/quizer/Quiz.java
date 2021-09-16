@@ -7,11 +7,13 @@ public class Quiz {
         tasksRemain = taskCount;
         gen = generator;
     }
+
     Task nextTask() {
         tasksRemain--;
         currentTask = gen.generate();
         return currentTask;
     }
+
     Result provideAnswer(String answer) {
         Result res = currentTask.validate(answer);
         if(res == Result.OK) {
@@ -23,9 +25,11 @@ public class Quiz {
         }
         return res;
     }
+
     boolean isFinished() {
         return tasksRemain == 0;
     }
+
     int getCorrectAnswerNumber() {
         return correctAnswers;
     }
@@ -35,12 +39,14 @@ public class Quiz {
     int getIncorrectInputNumber() {
         return incorrectInputAnswers;
     }
+
     double getMark() throws Exception {
         if(!isFinished()) {
             throw new QuizNotFinishedException("Mark is required before the quiz is finished");
         }
         return (double) (correctAnswers) /  (double) (correctAnswers + incorrectInputAnswers + wrongAnswers);
     }
+
     private Task.Generator gen;
     private Task currentTask = null;
     private int tasksRemain;
