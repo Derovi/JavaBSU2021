@@ -1,10 +1,10 @@
 package by.polchernikova.quizer.task_generators;
 
 import by.polchernikova.quizer.Task;
-import by.polchernikova.quizer.TaskGenerator;
+
 import java.util.*;
 
-public class PoolTaskGenerator implements TaskGenerator {
+public class PoolTaskGenerator implements Task.Generator {
     public PoolTaskGenerator(
             boolean allowDuplicate,
             Task... tasks

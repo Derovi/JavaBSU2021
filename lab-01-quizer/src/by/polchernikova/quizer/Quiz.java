@@ -3,7 +3,7 @@ package by.polchernikova.quizer;
 import by.polchernikova.quizer.exceptions.QuizNotFinishedException;
 
 public class Quiz {
-    Quiz(TaskGenerator generator, int taskCount) {
+    Quiz(Task.Generator generator, int taskCount) {
         tasksRemain = taskCount;
         gen = generator;
     }
@@ -41,7 +41,7 @@ public class Quiz {
         }
         return (double) (correctAnswers) /  (double) (correctAnswers + incorrectInputAnswers + wrongAnswers);
     }
-    private TaskGenerator gen;
+    private Task.Generator gen;
     private Task currentTask = null;
     private int tasksRemain;
     private int wrongAnswers = 0;

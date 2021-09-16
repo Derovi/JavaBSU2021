@@ -1,16 +1,15 @@
 package by.polchernikova.quizer.task_generators;
 
 import by.polchernikova.quizer.Task;
-import by.polchernikova.quizer.TaskGenerator;
 
 import java.util.*;
 
-public class GroupTaskGenerator implements TaskGenerator {
-    public GroupTaskGenerator(TaskGenerator... generators) {
+public class GroupTaskGenerator implements Task.Generator {
+    public GroupTaskGenerator(Task.Generator... generators) {
         gens = Arrays.stream(generators).toList();
     }
 
-    public GroupTaskGenerator(List<TaskGenerator> generators) {
+    public GroupTaskGenerator(List<Task.Generator> generators) {
         gens = generators;
     }
 
@@ -18,5 +17,5 @@ public class GroupTaskGenerator implements TaskGenerator {
         return gens.get((int) (Math.random() * (gens.size()))).generate();
     }
 
-    private List<TaskGenerator> gens;
+    private List<Task.Generator> gens;
 }

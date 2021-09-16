@@ -1,10 +1,65 @@
 package by.polchernikova.quizer.task.math_tasks;
 
 import by.polchernikova.quizer.Result;
+import by.polchernikova.quizer.Task;
+import by.polchernikova.quizer.exceptions.NothingToGenerateException;
 
-import java.util.Objects;
+import java.util.*;
 
 public abstract class AbstractMathTask implements MathTask {
+    abstract static protected class Generator implements MathTask.Generator {
+        public Generator(
+                double minNumber,
+                double maxNumber,
+                EnumSet<Operation> opers,
+                int precision
+        ) {
+            if(opers.isEmpty()) {
+                throw new NothingToGenerateException("No operations are allowed");
+            }
+            operations = new Vector<String>();
+            for(Operation oper : opers) {
+                operations.add(operation_to_symbol.get(oper));
+            }
+            if(minNumber > maxNumber) {
+                throw new IllegalArgumentException("Минимальное число должно быть меньше максимального");
+            }
+            minNum = minNumber;
+            maxNum = maxNumber;
+            if (precision < 0) {
+                throw new IllegalArgumentException("Отрицательная точность");
+            }
+            maxPrecision = precision;
+        }
+
+        public double getMinNumber() {
+            return minNum;
+        }
+        public double getMaxNumber() {
+            return maxNum;
+        }
+
+        public Task generate() {
+            double firstDouble = (Math.random() * (maxNum - minNum) + minNum);
+            double secondDouble = (Math.random() * (maxNum - minNum) + minNum);
+            int operIndex = (int)(Math.random() * operations.size());
+            return new ExpressionMathTask(firstDouble, secondDouble, operations.get(operIndex), maxPrecision);
+        }
+
+        protected Vector<String> operations;
+        protected final double minNum;
+        protected final double maxNum;
+        protected final int maxPrecision;
+        static protected final Map<Operation, String> operation_to_symbol;
+        static {
+            operation_to_symbol = new HashMap<Operation, String>();
+            operation_to_symbol.put(Operation.SUM, "+");
+            operation_to_symbol.put(Operation.DIFFERENCE, "-");
+            operation_to_symbol.put(Operation.MULTIPLICATION, "*");
+            operation_to_symbol.put(Operation.DIVISION, "/");
+        }
+    }
+
     public AbstractMathTask(double firstArgument, double secondArgument, String oper, int precision) {
         maxPrecision = precision;
         firstArg = convertUsingPrecision(firstArgument);
