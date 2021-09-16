@@ -11,10 +11,16 @@ public interface MathTask extends Task {
         }
     }
     public enum Operation {
-        SUM,
-        DIFFERENCE,
-        MULTIPLICATION,
-        DIVISION
+        SUM("+"),
+        DIFFERENCE("-"),
+        MULTIPLICATION("*"),
+        DIVISION("/");
+
+        private Operation(String symbol) {
+            this.symbol = symbol;
+        }
+
+        String symbol;
     }
     public String getAnswer();
 }

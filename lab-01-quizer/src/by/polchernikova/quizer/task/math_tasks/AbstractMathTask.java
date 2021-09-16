@@ -19,7 +19,7 @@ public abstract class AbstractMathTask implements MathTask {
             }
             operations = new Vector<String>();
             for(Operation oper : opers) {
-                operations.add(operation_to_symbol.get(oper));
+                operations.add(oper.symbol);
             }
             if(minNumber > maxNumber) {
                 throw new IllegalArgumentException("Минимальное число должно быть меньше максимального");
@@ -50,14 +50,6 @@ public abstract class AbstractMathTask implements MathTask {
         protected final double minNum;
         protected final double maxNum;
         protected final int maxPrecision;
-        static protected final Map<Operation, String> operation_to_symbol;
-        static {
-            operation_to_symbol = new HashMap<Operation, String>();
-            operation_to_symbol.put(Operation.SUM, "+");
-            operation_to_symbol.put(Operation.DIFFERENCE, "-");
-            operation_to_symbol.put(Operation.MULTIPLICATION, "*");
-            operation_to_symbol.put(Operation.DIVISION, "/");
-        }
     }
 
     public AbstractMathTask(double firstArgument, double secondArgument, String oper, int precision) {
