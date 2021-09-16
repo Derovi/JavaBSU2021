@@ -6,8 +6,7 @@ import by.polchernikova.quizer.exceptions.NothingToGenerateException;
 import by.polchernikova.quizer.task.math_tasks.ExpressionMathTask;
 import by.polchernikova.quizer.task.math_tasks.MathTask.Operation;
 
-import java.util.EnumSet;
-import java.util.Vector;
+import java.util.*;
 
 public abstract class AbstractMathTaskGenerator implements TaskGenerator {
     public AbstractMathTaskGenerator(
@@ -20,17 +19,8 @@ public abstract class AbstractMathTaskGenerator implements TaskGenerator {
             throw new NothingToGenerateException("No operations are allowed");
         }
         operations = new Vector<String>();
-        if(opers.contains(Operation.SUM)) {
-            operations.add("+");
-        }
-        if(opers.contains(Operation.DIFFERENCE)) {
-            operations.add("-");
-        }
-        if(opers.contains(Operation.MULTIPLICATION)) {
-            operations.add("*");
-        }
-        if(opers.contains(Operation.DIVISION)) {
-            operations.add("/");
+        for(Operation oper : opers) {
+            operations.add(operation_to_symbol.get(oper));
         }
         if(minNumber > maxNumber) {
             throw new IllegalArgumentException("Минимальное число должно быть меньше максимального");
@@ -61,4 +51,12 @@ public abstract class AbstractMathTaskGenerator implements TaskGenerator {
     protected final double minNum;
     protected final double maxNum;
     protected final int maxPrecision;
+    static protected final Map<Operation, String> operation_to_symbol;
+    static {
+        operation_to_symbol = new HashMap<Operation, String>();
+        operation_to_symbol.put(Operation.SUM, "+");
+        operation_to_symbol.put(Operation.DIFFERENCE, "-");
+        operation_to_symbol.put(Operation.MULTIPLICATION, "*");
+        operation_to_symbol.put(Operation.DIVISION, "/");
+    }
 }
