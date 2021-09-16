@@ -386,17 +386,17 @@ interface MathTask extends Task {
 }
 
 abstract class AbstractMathTask implements Task {
-    abstract class Generator implements MathTask.Generator { /* ... */ }
+    static abstract class Generator implements MathTask.Generator { /* ... */ }
     // ...
 }
 
 class ExpressionTask extends AbstractMathTask {
-    class Generator extends AbstractMathTask.Generator { /* ... */ }
+    static class Generator extends AbstractMathTask.Generator { /* ... */ }
     // ...
 }
 
 class EquationTask extends AbstractMathTask {
-    class Generator extends AbstractMathTask.Generator { /* ... */ }
+    static class Generator extends AbstractMathTask.Generator { /* ... */ }
     // ...
 }
 ```
