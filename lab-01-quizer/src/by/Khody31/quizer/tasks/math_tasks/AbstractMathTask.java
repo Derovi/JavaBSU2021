@@ -3,6 +3,8 @@ package by.Khody31.quizer.tasks.math_tasks;
 import by.Khody31.quizer.Result;
 import by.Khody31.quizer.Task;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.EnumSet;
 import java.util.Objects;
 import java.util.Vector;
@@ -50,8 +52,8 @@ public abstract class AbstractMathTask implements MathTask {
 
     public AbstractMathTask(double num1, double num2, String op, int precision) {
         this.precision = precision;
-        this.num1 = num1;
-        this.num2 = num2;
+        this.num1 = shrinkAccordingToPrecision(num1);
+        this.num2 = shrinkAccordingToPrecision(num2);
         this.op = op;
     }
 
@@ -62,6 +64,12 @@ public abstract class AbstractMathTask implements MathTask {
         } else {
             return Result.WRONG;
         }
+    }
+
+    public double shrinkAccordingToPrecision(double num) {
+        return BigDecimal.valueOf(num)
+                .setScale(3, RoundingMode.HALF_UP)
+                .doubleValue();
     }
 
     protected int precision;

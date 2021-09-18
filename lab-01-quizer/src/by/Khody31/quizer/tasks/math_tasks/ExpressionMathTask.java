@@ -46,6 +46,6 @@ public class ExpressionMathTask extends AbstractMathTask {
         } else {
             throw new NumberFormatException();
         }
-        return Double.toString(ans);
+        return Double.toString(shrinkAccordingToPrecision(ans));
     }
 }
