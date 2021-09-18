@@ -6,7 +6,7 @@ import java.util.EnumSet;
 import java.util.Objects;
 
 public class EquationMathTask extends AbstractMathTask {
-    public class Generator extends AbstractMathTask.Generator {
+    public static class Generator extends AbstractMathTask.Generator {
         public Generator (
                 double minNumber, double maxNumber,
                 EnumSet<Operation> ops, int precision) {

@@ -8,19 +8,28 @@ import java.util.Objects;
 import java.util.Vector;
 
 public abstract class AbstractMathTask implements MathTask {
-    abstract protected class Generator implements MathTask.Generator {
+    static abstract protected class Generator implements MathTask.Generator {
         public Generator(
                 double minNum,
                 double maxNum,
                 EnumSet<Operation> operators,
                 int precision) {
+            if (minNum > maxNum) {
+                throw new IllegalArgumentException("Minimum number is not less then maximum");
+            }
+            if (operators.isEmpty()) {
+                throw new IllegalArgumentException("No operations are allowed");
+            }
+            if (precision < 0) {
+                throw new IllegalArgumentException("Negative precision is not possible");
+            }
             this.minNum = minNum;
             this.maxNum = maxNum;
             operations = new Vector<>();
-            for(Operation op : operators) {
+            for (Operation op : operators) {
                 operations.add(op.symbol);
             }
-            maxPrecision = precision;
+            this.precision = precision;
         }
 
         @Override
@@ -36,7 +45,7 @@ public abstract class AbstractMathTask implements MathTask {
         protected Vector<String> operations;
         protected final double minNum;
         protected final double maxNum;
-        protected final int maxPrecision;
+        protected final int precision;
     }
 
     public AbstractMathTask(double num1, double num2, String op, int precision) {
