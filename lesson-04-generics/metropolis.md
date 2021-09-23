@@ -4,7 +4,7 @@
 
 ## Базовая архитектура в стиле постмодернизма
 
-![alt text](https://lh3.googleusercontent.com/proxy/vC3M0-8702AXvOzQtlFF30RFnWHLHNR1C0x-_mp2NCS9trjNK1HB3fGPmO0a81ARl6GuppqCRoYcFAu2hD8n2oC2W0llLFRmhZJTV5whrltHhg)
+![](https://lh3.googleusercontent.com/proxy/vC3M0-8702AXvOzQtlFF30RFnWHLHNR1C0x-_mp2NCS9trjNK1HB3fGPmO0a81ARl6GuppqCRoYcFAu2hD8n2oC2W0llLFRmhZJTV5whrltHhg)
 
 Мегаполис состоит из районов (`District`). Каждый район может состоять только из зданий (`Building`) одного типа. Например, район `OfficeDistrict` может состоять только из офисов (`Office extends Building`), т. e. там могут быть `RubinPlaza extends Office` или `ZurichGoogle extends Office`, но не может быть `House extends Building`.
 
@@ -36,7 +36,7 @@ class House extends Building {
 
 ##  Район строят строители
 
-![alt text](https://lh3.googleusercontent.com/proxy/M9KDJFMWhsRWnurSDSyiK7O2_cQ-LWWeVqz4q1CSM0tPgYdXnVsMo7DJGI6RGXHdTnsZJsXhbqpw2_7f4qBPHOinHO_DFHdRafRtJTE1BU8bZCkeCmCXh8eOd-Q1Z-8kszU4GJxoIbs)
+![](https://lh3.googleusercontent.com/proxy/M9KDJFMWhsRWnurSDSyiK7O2_cQ-LWWeVqz4q1CSM0tPgYdXnVsMo7DJGI6RGXHdTnsZJsXhbqpw2_7f4qBPHOinHO_DFHdRafRtJTE1BU8bZCkeCmCXh8eOd-Q1Z-8kszU4GJxoIbs)
 
 🛠 Сейчас наш `District` создавать не удобно, давайте реализуем в нем патерн _Builder_, чтобы можно было делать использовать такой интерфейс:
 
@@ -47,6 +47,8 @@ new District<Office>()
 ```
 
 ## А могут ли камни платить налоги?
+
+<img src="https://meduza.io/image/attachments/images/002/746/308/large/HD0gZkuny9yBNEA8JA2Ulw.jpg" width="250">
 
 Добавим в `District` метод `collectInfo`, который будет собирать какую-то информацию о районе. Он будет принимать какую-то функцию `calculator (building -> optional)`, которая принимает `Building` и возвращает какой-то `Optional<T>`. Метод `collectInfo` будет возвращать `List<T>` - результаты удачного выполнения `calculator` для всех зданий. [Удачное выполнение `calculator` - `Optional.isPresent()`]
 
@@ -74,7 +76,7 @@ Penalty median = calculateMedianFine(applePenalties);
 
 ## Субподрядчики
 
-![alt text](https://i.ytimg.com/vi/EDT3-uK1ntA/mqdefault.jpg)
+![](https://i.ytimg.com/vi/EDT3-uK1ntA/mqdefault.jpg)
 
 Оказывается, у нас есть много разных видов районов и строителей, которые могут строить только обычные районы уже не хватает...
 
@@ -101,7 +103,7 @@ new OfficeDistict()
 
 ## 📰 В зоопарке Атланты пытаются излечить от коронавируса 13 горилл 
 
-![alt text](https://cdn.iz.ru/sites/default/files/styles/900x506/public/news-2021-09/20210812_zia_c181_089.jpeg.jpg?itok=uTgM0Tx6)
+![](https://cdn.iz.ru/sites/default/files/styles/900x506/public/news-2021-09/20210812_zia_c181_089.jpeg.jpg?itok=uTgM0Tx6)
 
 Некоторые здания предоставляют информацию об случаях заражения короновирусом. Нужно уметь получать эту информацию об районах с такими зданиями.
 
@@ -162,7 +164,7 @@ float result = waterCalculator.getSummaryIncome();
 ```
 
 ## Мегаполисами не рождаются
-![alt text](https://www.sb.by/upload/resize_cache/slam.image/iblock/4e0/855_2000_1/4e0ea4d8fa8ebe95545bf6f115a22d55.jpg)
+![](https://www.sb.by/upload/resize_cache/slam.image/iblock/4e0/855_2000_1/4e0ea4d8fa8ebe95545bf6f115a22d55.jpg)
 
 Иногда районы нужно объединять. Но ведь если у нас есть два района с разными типами зданий, то какой тип должен получиться у района, который объединяет эти два? Вообще, иерархия наследования зданий в районе - дерево и наша задача - найти их LCA (наименьшего общего предка).
 
