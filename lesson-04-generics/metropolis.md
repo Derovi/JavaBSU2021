@@ -4,7 +4,7 @@
 
 ## Базовая архитектура в стиле постмодернизма
 
-![alt text](https://lh3.googleusercontent.com/proxy/6kRgI8PINbYZaEs8OEPM2Ic-Dc3LxX4gdq0pzrRM1Os8bLJEFYBdq3vfQL09ZsZ5ktXZRE1F8M_5HmcDHviQZoXI1uFb5JreO5P3C3fW67kzGw)
+![alt text](https://lh3.googleusercontent.com/proxy/vC3M0-8702AXvOzQtlFF30RFnWHLHNR1C0x-_mp2NCS9trjNK1HB3fGPmO0a81ARl6GuppqCRoYcFAu2hD8n2oC2W0llLFRmhZJTV5whrltHhg)
 
 Мегаполис состоит из районов (`District`). Каждый район может состоять только из зданий (`Building`) одного типа. Например, район `OfficeDistrict` может состоять только из офисов (`Office extends Building`), т. e. там могут быть `RubinPlaza extends Office` или `ZurichGoogle extends Office`, но не может быть `House extends Building`.
 
