@@ -4,13 +4,14 @@ import by.kmekhovich.quizer.Task;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class GroupTaskGenerator implements Task.Generator {
-    ArrayList<Task.Generator> generators = new ArrayList<>();
+    List<Task.Generator> generators;
 
     public GroupTaskGenerator(Task.Generator... generators) {
-        this.generators.addAll(Arrays.asList(generators));
+        this.generators = List.of(generators);
     }
 
     public GroupTaskGenerator(ArrayList<Task.Generator> generators) {

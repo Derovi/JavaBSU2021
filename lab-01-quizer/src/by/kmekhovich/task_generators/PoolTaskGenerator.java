@@ -3,17 +3,17 @@ package by.kmekhovich.task_generators;
 import by.kmekhovich.quizer.Task;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class PoolTaskGenerator implements Task.Generator {
     boolean allowDuplicate;
-    ArrayList<Task> tasks = new ArrayList<>();
+    List<Task> tasks;
 
     public PoolTaskGenerator(boolean allowDuplicate,
                              Task... tasks) {
         this.allowDuplicate = allowDuplicate;
-        this.tasks.addAll(Arrays.asList(tasks));
+        this.tasks = List.of(tasks);
     }
 
     public PoolTaskGenerator(boolean allowDuplicate,
