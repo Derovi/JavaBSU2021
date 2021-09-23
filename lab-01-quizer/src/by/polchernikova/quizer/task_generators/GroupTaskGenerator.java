@@ -6,7 +6,7 @@ import java.util.*;
 
 public class GroupTaskGenerator implements Task.Generator {
     public GroupTaskGenerator(Task.Generator... generators) {
-        gens = Arrays.stream(generators).toList();
+        gens = List.of(generators);
     }
 
     public GroupTaskGenerator(List<Task.Generator> generators) {
