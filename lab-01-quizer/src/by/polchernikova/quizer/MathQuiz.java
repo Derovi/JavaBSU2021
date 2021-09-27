@@ -36,9 +36,9 @@ public class MathQuiz {
     public static void main(String[] args) throws Exception {
         System.out.println("Enter test name...");
         Scanner reader = new Scanner(System.in);
-        String test_name = reader.nextLine();
+        String testName = reader.nextLine();
         Map<String, Quiz> quiz_map= getQuizMap();
-        Quiz test = quiz_map.get(test_name);
+        Quiz test = quiz_map.get(testName);
         if(test == null) {
             throw new InvalidTestNameException("No such test");
         }

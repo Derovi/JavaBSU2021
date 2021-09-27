@@ -46,7 +46,7 @@ public abstract class AbstractMathTask implements MathTask {
             return new ExpressionMathTask(firstDouble, secondDouble, operations.get(operIndex), maxPrecision);
         }
 
-        protected Vector<String> operations;
+        protected List<String> operations;
         protected final double minNum;
         protected final double maxNum;
         protected final int maxPrecision;

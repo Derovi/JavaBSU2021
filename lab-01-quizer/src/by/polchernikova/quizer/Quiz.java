@@ -41,7 +41,7 @@ public class Quiz {
     }
 
     double getMark() throws Exception {
-        if(!isFinished()) {
+        if (!isFinished()) {
             throw new QuizNotFinishedException("Mark is required before the quiz is finished");
         }
         return (double) (correctAnswers) /  (double) (correctAnswers + incorrectInputAnswers + wrongAnswers);
