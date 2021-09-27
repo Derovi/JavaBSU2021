@@ -81,12 +81,7 @@ public abstract class AbstractMathTask implements MathTask {
     }
 
     protected double getEquationResult() {
-        double eq_result = switch (op) {
-            case PLUS -> firstOperand + secondOperand;
-            case MINUS -> firstOperand - secondOperand;
-            case MULTIPLICATION -> firstOperand * secondOperand;
-            case DIVISION -> firstOperand / secondOperand;
-        };
+        double eq_result = op.doOperation(firstOperand, secondOperand);
         return makeDoubleAccordingPrecision(eq_result);
     }
 

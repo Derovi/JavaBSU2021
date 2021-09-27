@@ -8,15 +8,12 @@ import by.kmekhovich.tasks.TextTask;
 import by.kmekhovich.tasks.math_tasks.EquationTask;
 import by.kmekhovich.tasks.math_tasks.ExpressionTask;
 
-import java.util.EnumSet;
-import java.util.Map;
-import java.util.Scanner;
-import java.util.TreeMap;
+import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Main {
-    static TreeMap<String, Quiz> getQuizMap() {
-        TreeMap<String, Quiz> quizMap = new TreeMap<>();
+    static HashMap<String, Quiz> getQuizMap() {
+        HashMap<String, Quiz> quizMap = new HashMap<>();
         quizMap.put("pool", new Quiz(new PoolTaskGenerator(true,
                 new TextTask("no", "yes"),
                 new TextTask("gg", "wp"),
@@ -48,7 +45,7 @@ public class Main {
 
     public static void main(String[] args) throws QuizNotFinishedException {
         System.out.println("Enter quiz name. Available tests are : ");
-        TreeMap<String, Quiz> quizMap = getQuizMap();
+        HashMap<String, Quiz> quizMap = getQuizMap();
         for(Map.Entry<String, Quiz> entry : quizMap.entrySet()) {
             String key = entry.getKey();
             System.out.println(key);
