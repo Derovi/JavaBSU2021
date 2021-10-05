@@ -29,9 +29,9 @@
 ### Домашнее задание №2. Quizer app
 Условие: https://github.com/Derovi/JavaBSU2021/blob/master/lab-02-quizer-app/TASK.md
 
-**`Soft deadline: 8.09.2021, 23:59`**
+**`Soft deadline: 8.10.2021, 23:59`**
 
-**`Hard deadline: 13.09.2021, 23:59`**
+**`Hard deadline: 13.10.2021, 23:59`**
 
 ### Домашнее задание №1. Quizer library
 
