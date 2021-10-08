@@ -5,7 +5,7 @@ name: Gradle Package
 
 on:
   push:
-    branches: ['dz-02']
+    branches: [dz-02]
 
 jobs:
   build:
