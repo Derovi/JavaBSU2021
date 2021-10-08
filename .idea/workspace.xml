@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="4c8f2def-4113-43cf-b673-420d967568ce" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/lab-02-quizer-lib/bulid.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab-01-quizer/TASK.md" beforeDir="false" afterPath="$PROJECT_DIR$/lab-02-quizer-lib/TASK.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab-01-quizer/src/by/polchernikova/quizer/MathQuiz.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab-01-quizer/src/by/polchernikova/quizer/Quiz.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab-02-quizer-lib/src/by/polchernikova/quizer/Quiz.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab-01-quizer/src/by/polchernikova/quizer/Result.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab-02-quizer-lib/src/by/polchernikova/quizer/Result.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab-01-quizer/src/by/polchernikova/quizer/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab-02-quizer-lib/src/by/polchernikova/quizer/Task.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab-01-quizer/src/by/polchernikova/quizer/exceptions/InvalidTestNameException.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab-02-quizer-lib/src/by/polchernikova/quizer/exceptions/InvalidTestNameException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab-01-quizer/src/by/polchernikova/quizer/exceptions/NothingToGenerateException.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab-02-quizer-lib/src/by/polchernikova/quizer/exceptions/NothingToGenerateException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab-01-quizer/src/by/polchernikova/quizer/exceptions/QuizNotFinishedException.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab-02-quizer-lib/src/by/polchernikova/quizer/exceptions/QuizNotFinishedException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab-01-quizer/src/by/polchernikova/quizer/task/TextTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab-02-quizer-lib/src/by/polchernikova/quizer/task/TextTask.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab-01-quizer/src/by/polchernikova/quizer/task/math_tasks/AbstractMathTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab-02-quizer-lib/src/by/polchernikova/quizer/task/math_tasks/AbstractMathTask.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab-01-quizer/src/by/polchernikova/quizer/task/math_tasks/EquationMathTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab-02-quizer-lib/src/by/polchernikova/quizer/task/math_tasks/EquationMathTask.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab-01-quizer/src/by/polchernikova/quizer/task/math_tasks/ExpressionMathTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab-02-quizer-lib/src/by/polchernikova/quizer/task/math_tasks/ExpressionMathTask.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab-01-quizer/src/by/polchernikova/quizer/task/math_tasks/MathTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab-02-quizer-lib/src/by/polchernikova/quizer/task/math_tasks/MathTask.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab-01-quizer/src/by/polchernikova/quizer/task_generators/GroupTaskGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab-02-quizer-lib/src/by/polchernikova/quizer/task_generators/GroupTaskGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab-01-quizer/src/by/polchernikova/quizer/task_generators/PoolTaskGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab-02-quizer-lib/src/by/polchernikova/quizer/task_generators/PoolTaskGenerator.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="MIXED" />
+  </component>
+  <component name="ProjectId" id="1z82EfdFEm5hZRBGJGqKCDn6jyF" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/lab-01-quizer" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="JavaBSU2021" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="/home/polina/IdeaProjects/JavaBSU2021/lab-01-quizer-lib/bulid.gradle (1)" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/lab-01-quizer-lib/bulid.gradle" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list />
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="/home/polina/IdeaProjects/JavaBSU2021/lab-01-quizer-lib/bulid.gradle (2)" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/lab-01-quizer-lib/bulid.gradle" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list />
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="/home/polina/IdeaProjects/JavaBSU2021/lab-01-quizer-lib/bulid.gradle [publish]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/lab-01-quizer-lib/bulid.gradle" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="publish" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="/home/polina/IdeaProjects/JavaBSU2021/lab-01-quizer-lib/bulid.gradle" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/lab-01-quizer-lib/bulid.gradle" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list />
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Gradle./home/polina/IdeaProjects/JavaBSU2021/lab-01-quizer-lib/bulid.gradle [publish]" />
+        <item itemvalue="Gradle./home/polina/IdeaProjects/JavaBSU2021/lab-01-quizer-lib/bulid.gradle (2)" />
+        <item itemvalue="Gradle./home/polina/IdeaProjects/JavaBSU2021/lab-01-quizer-lib/bulid.gradle (1)" />
+        <item itemvalue="Gradle./home/polina/IdeaProjects/JavaBSU2021/lab-01-quizer-lib/bulid.gradle" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4c8f2def-4113-43cf-b673-420d967568ce" name="Changes" comment="" />
+      <created>1633515288323</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1633515288323</updated>
+      <workItem from="1633515297183" duration="8992000" />
+      <workItem from="1633584345670" duration="858000" />
+      <workItem from="1633585225440" duration="3483000" />
+      <workItem from="1633591394841" duration="23000" />
+      <workItem from="1633591425697" duration="82000" />
+      <workItem from="1633591512243" duration="5000" />
+      <workItem from="1633591533319" duration="99000" />
+      <workItem from="1633591681755" duration="125000" />
+      <workItem from="1633591823916" duration="19000" />
+      <workItem from="1633591848139" duration="10000" />
+      <workItem from="1633591882229" duration="44000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+</project>

@@ -1,0 +1,85 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "by.polchernikova.quizer",
+    "module": "lab-02-quizer-lib",
+    "version": "1.0-SNAPSHOT",
+    "attributes": {
+      "org.gradle.status": "integration"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "7.1"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 16,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "com.fasterxml.jackson.core",
+          "module": "jackson-databind",
+          "version": {
+            "requires": "2.12.5"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "lab-02-quizer-lib-1.0-SNAPSHOT.jar",
+          "url": "lab-02-quizer-lib-1.0-SNAPSHOT.jar",
+          "size": 16610,
+          "sha512": "d4807e1e4de5f479588bd127e7ef67bb2efe116fbdd5a8e5e93ae3c3455122be7ffc920316592309bbfdd7063173d95a923817c7269a4cd1f4901c00ed4e76fb",
+          "sha256": "c23b58165e5dcca1a4530e3145a71658a5d4186a22d073c2d9e0b1094253cdf1",
+          "sha1": "ea0e0fa91d07d5374f7882bdd8f9768062d0fa7f",
+          "md5": "4242ffab4af31653f2e7394f2cb875a8"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 16,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "com.fasterxml.jackson.datatype",
+          "module": "jackson-datatype-jsr310",
+          "version": {
+            "requires": "2.12.5"
+          }
+        },
+        {
+          "group": "com.fasterxml.jackson.core",
+          "module": "jackson-databind",
+          "version": {
+            "requires": "2.12.5"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "lab-02-quizer-lib-1.0-SNAPSHOT.jar",
+          "url": "lab-02-quizer-lib-1.0-SNAPSHOT.jar",
+          "size": 16610,
+          "sha512": "d4807e1e4de5f479588bd127e7ef67bb2efe116fbdd5a8e5e93ae3c3455122be7ffc920316592309bbfdd7063173d95a923817c7269a4cd1f4901c00ed4e76fb",
+          "sha256": "c23b58165e5dcca1a4530e3145a71658a5d4186a22d073c2d9e0b1094253cdf1",
+          "sha1": "ea0e0fa91d07d5374f7882bdd8f9768062d0fa7f",
+          "md5": "4242ffab4af31653f2e7394f2cb875a8"
+        }
+      ]
+    }
+  ]
+}
