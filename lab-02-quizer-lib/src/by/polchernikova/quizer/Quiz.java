@@ -4,8 +4,8 @@ import by.polchernikova.quizer.exceptions.QuizNotFinishedException;
 
 public class Quiz {
     public Quiz(Task.Generator generator, int taskCount) {
-        gen = generator;
         tasksRemain = taskCount;
+        gen = generator;
     }
 
     public Task nextTask() {
