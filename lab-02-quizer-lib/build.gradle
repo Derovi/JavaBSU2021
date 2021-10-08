@@ -32,7 +32,7 @@ publishing {
             name = "GitHubPackages"
             url = "https://maven.pkg.github.com/polchernikova/JavaBSU2021"
             credentials {
-                username = project.findProperty("GITHUB_ACTOR") ?: System.getenv("PUBLISH_USERNAME")
+                username = project.findProperty("GITHUB_ACTOR") ?: System.getenv("ACTOR_NAME")
                 password = project.findProperty("GITHUB_TOKEN") ?: System.getenv("PUBLISH_TOKEN")
             }
         }
