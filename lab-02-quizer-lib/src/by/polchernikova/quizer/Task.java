@@ -7,6 +7,6 @@ public interface Task {
         Task generate();
     }
 
-    String getText();
     Result validate(String answer);
+    String getText();
 }
