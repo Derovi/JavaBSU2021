@@ -7,6 +7,10 @@ on:
   push:
     branches: [dz-02]
 
+env:
+  ACTOR_NAME: ${{ secrets.ACTOR_NAME }}
+  PUBLISH_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
+
 jobs:
   gradle:
     strategy:
