@@ -3,18 +3,18 @@ package by.polchernikova.quizer;
 import by.polchernikova.quizer.exceptions.QuizNotFinishedException;
 
 public class Quiz {
-    Quiz(Task.Generator generator, int taskCount) {
+    public Quiz(Task.Generator generator, int taskCount) {
         tasksRemain = taskCount;
         gen = generator;
     }
 
-    Task nextTask() {
+    public Task nextTask() {
         tasksRemain--;
         currentTask = gen.generate();
         return currentTask;
     }
 
-    Result provideAnswer(String answer) {
+    public Result provideAnswer(String answer) {
         Result res = currentTask.validate(answer);
         if(res == Result.OK) {
             correctAnswers++;
@@ -26,7 +26,7 @@ public class Quiz {
         return res;
     }
 
-    boolean isFinished() {
+    public boolean isFinished() {
         return tasksRemain == 0;
     }
 
@@ -40,7 +40,7 @@ public class Quiz {
         return incorrectInputAnswers;
     }
 
-    double getMark() throws Exception {
+    public double getMark() throws Exception {
         if (!isFinished()) {
             throw new QuizNotFinishedException("Mark is required before the quiz is finished");
         }
