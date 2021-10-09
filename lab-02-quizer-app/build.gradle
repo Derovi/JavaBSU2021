@@ -1,0 +1,22 @@
+plugins {
+    id 'java'
+}
+
+group 'by.polchernikova'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    maven {
+        name = "GitHubPackages"
+        url = "https://maven.pkg.github.com/polchernikova/JavaBSU2021"
+        credentials {
+            username = project.findProperty("GITHUB_ACTOR") ?: System.getenv("ACTOR_NAME")
+            password = project.findProperty("GITHUB_TOKEN") ?: System.getenv("PUBLISH_TOKEN")
+        }
+    }
+}
+
+dependencies {
+    implementation 'by.polchernikova.quizer:lab-02-quizer-lib:1.1-SNAPSHOT'
+}
