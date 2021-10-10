@@ -44,7 +44,7 @@ public class Quiz {
         if (!isFinished()) {
             throw new QuizNotFinishedException("Mark is required before the quiz is finished");
         }
-        return (double) (correctAnswers) /  (double) (correctAnswers + incorrectInputAnswers + wrongAnswers);
+        return 10 * (double) (correctAnswers) /  (double) (correctAnswers + incorrectInputAnswers + wrongAnswers);
     }
 
     private Task.Generator gen;
