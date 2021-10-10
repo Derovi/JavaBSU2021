@@ -1,0 +1,60 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "by.kmekhovich",
+    "module": "lab-01-quizer-lib",
+    "version": "1.5",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "7.1"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 16,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api"
+      },
+      "files": [
+        {
+          "name": "lab-01-quizer-lib-1.5.jar",
+          "url": "lab-01-quizer-lib-1.5.jar",
+          "size": 17198,
+          "sha512": "91f217f1cc25607ce1a212da9bb684247718ab5d9c7765c1be3f24c5dcbc25dfa32e088e30cc96cd731a7b9be971bd5bcae02fb5d41a6f80c848a76561e336fa",
+          "sha256": "1031ad223212130216c34df9ea60f08bc20633f6af00750e72f727891c998d37",
+          "sha1": "54da9a4544882c77289c513879fc613b54fd1ce2",
+          "md5": "a7900fc8b4723e6a5cc6fa060c7850af"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 16,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "lab-01-quizer-lib-1.5.jar",
+          "url": "lab-01-quizer-lib-1.5.jar",
+          "size": 17198,
+          "sha512": "91f217f1cc25607ce1a212da9bb684247718ab5d9c7765c1be3f24c5dcbc25dfa32e088e30cc96cd731a7b9be971bd5bcae02fb5d41a6f80c848a76561e336fa",
+          "sha256": "1031ad223212130216c34df9ea60f08bc20633f6af00750e72f727891c998d37",
+          "sha1": "54da9a4544882c77289c513879fc613b54fd1ce2",
+          "md5": "a7900fc8b4723e6a5cc6fa060c7850af"
+        }
+      ]
+    }
+  ]
+}

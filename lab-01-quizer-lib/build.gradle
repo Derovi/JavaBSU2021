@@ -1,0 +1,37 @@
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+}
+
+group 'by.kmekhovich'
+version '1.5'
+
+repositories {
+    mavenCentral()
+}
+
+publishing {
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/kmekhovich/JavaBSU2021")
+            credentials {
+                username = project.findProperty("gpr.user") ?: System.getenv("PUBLISH_USERNAME")
+                password = project.findProperty("gpr.token") ?: System.getenv("PUBLISH_TOKEN")
+            }
+        }
+    }
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+        }
+    }
+}
+
+sourceSets {
+    main(({
+        java {
+            srcDirs = ['src']
+        }
+    }))
+}

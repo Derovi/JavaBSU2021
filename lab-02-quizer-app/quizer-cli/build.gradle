@@ -1,0 +1,35 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group 'by.kmekhovich'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    maven {
+        name = "GitHubPackages"
+        url = uri("https://maven.pkg.github.com/kmekhovich/JavaBSU2021")
+        credentials {
+            username = project.findProperty("gpr.user") ?: System.getenv("PUBLISH_USERNAME")
+            password = project.findProperty("gpr.token") ?: System.getenv("PUBLISH_TOKEN")
+        }
+    }
+}
+
+dependencies {
+    implementation 'by.kmekhovich:lab-01-quizer-lib:1.5'
+}
+
+sourceSets {
+    main(({
+        java {
+            srcDirs = ['src/main/java']
+        }
+    }))
+}
+
+application {
+    mainClass = 'by.kmekhovich.quizercli.Main'
+}

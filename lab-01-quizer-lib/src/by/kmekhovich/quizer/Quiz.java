@@ -4,10 +4,12 @@ import by.kmekhovich.exceptions.QuizNotFinishedException;
 import by.kmekhovich.operator.Operator;
 import by.kmekhovich.task_generators.GroupTaskGenerator;
 import by.kmekhovich.task_generators.PoolTaskGenerator;
+import by.kmekhovich.tasks.math_tasks.*;
 import by.kmekhovich.tasks.TextTask;
 
 import java.util.EnumSet;
 import java.util.TreeMap;
+import java.util.HashMap;
 
 public class Quiz {
     Task.Generator generator;
@@ -48,26 +50,57 @@ public class Quiz {
         return result;
     }
 
-    boolean isFinished() {
+    public boolean isFinished() {
         return solvedTasks == taskCount;
     }
 
-    int getCorrectAnswerNumber() {
+    public int getCorrectAnswerNumber() {
         return score;
     }
 
-    int getWrongAnswerNumber() {
+    public int getWrongAnswerNumber() {
         return solvedTasks - score;
     }
 
-    int getIncorrectInputNumber() {
+    public int getIncorrectInputNumber() {
         return incorrectInputCount;
     }
 
-    double getMark() throws QuizNotFinishedException {
+    public double getMark() throws QuizNotFinishedException {
         if (!isFinished()) {
             throw new QuizNotFinishedException("Finish test firstly");
         }
         return (double) score / taskCount;
+    }
+
+    public static HashMap<String, Quiz> getQuizMap() {
+        HashMap<String, Quiz> quizMap = new HashMap<>();
+        quizMap.put("pool", new Quiz(new PoolTaskGenerator(true,
+                new TextTask("no", "yes"),
+                new TextTask("gg", "wp"),
+                new TextTask("omg", "wtf"),
+                new TextTask("yandex", "google")),
+                3));
+        quizMap.put("math", new Quiz(new GroupTaskGenerator(
+                new ExpressionTask.Generator(-5, 5, EnumSet.allOf(Operator.class), 1),
+                new EquationTask.Generator(-5, 5, EnumSet.allOf(Operator.class), 1),
+                new ExpressionTask.Generator(-5, 5, EnumSet.allOf(Operator.class), 0),
+                new EquationTask.Generator(-5, 5, EnumSet.allOf(Operator.class), 0)),
+                5));
+        quizMap.put("int", new Quiz(new GroupTaskGenerator(
+                new ExpressionTask.Generator(1, 9, EnumSet.allOf(Operator.class), 0),
+                new EquationTask.Generator(1, 9, EnumSet.allOf(Operator.class), 0)),
+                10));
+        quizMap.put("real", new Quiz(new GroupTaskGenerator(
+                new ExpressionTask.Generator(1, 9, EnumSet.allOf(Operator.class), 2),
+                new EquationTask.Generator(1, 9, EnumSet.allOf(Operator.class), 2)),
+                3));
+        quizMap.put("question", new Quiz(new PoolTaskGenerator(false,
+                new TextTask("sqrt(9)", "+-3"),
+                new TextTask("gfdlgdfg", "dasdas"),
+                new TextTask("gsdgs", "gdsg)"),
+                new TextTask("fsa", "gdsgsd")),
+                1));
+        return quizMap;
     }
 }
