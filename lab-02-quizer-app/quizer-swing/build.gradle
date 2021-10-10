@@ -16,7 +16,19 @@ repositories {
         }
     }
 }
-
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src.app']
+        }
+    }
+}
 dependencies {
-    implementation 'by.polchernikova.quizer:lab-02-quizer-lib:1.1-SNAPSHOT'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+    implementation "by.polchernikova.quizer:lab-02-quizer-lib:1.1-SNAPSHOT"
+}
+
+test {
+    useJUnitPlatform()
 }

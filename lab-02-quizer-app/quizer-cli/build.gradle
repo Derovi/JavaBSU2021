@@ -1,0 +1,34 @@
+plugins {
+    id 'java'
+}
+
+group 'by.polchernikova'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    maven {
+        name = "GitHubPackages"
+        url = "https://maven.pkg.github.com/polchernikova/JavaBSU2021"
+        credentials {
+            username = project.findProperty("GITHUB_ACTOR") ?: System.getenv("ACTOR_NAME")
+            password = project.findProperty("GITHUB_TOKEN") ?: System.getenv("PUBLISH_TOKEN")
+        }
+    }
+}
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src.cli']
+        }
+    }
+}
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+    implementation "by.polchernikova.quizer:lab-02-quizer-lib:1.1-SNAPSHOT"
+}
+
+test {
+    useJUnitPlatform()
+}
