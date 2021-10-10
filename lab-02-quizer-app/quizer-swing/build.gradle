@@ -3,7 +3,7 @@ plugins {
 }
 
 group 'by.polchernikova'
-version '1.0-SNAPSHOT'
+version '1.2-SNAPSHOT'
 
 repositories {
     mavenCentral()
@@ -26,7 +26,7 @@ sourceSets {
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
-    implementation "by.polchernikova.quizer:lab-02-quizer-lib:1.1-SNAPSHOT"
+    implementation "by.polchernikova.quizer:lab-02-quizer-lib:1.2-SNAPSHOT"
 }
 
 test {
