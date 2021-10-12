@@ -26,9 +26,26 @@
 
 ## Домашние задания
 
-### Домашнее задание №1. Quizer
+### Домашнее задание №3. 
+Условие: https://github.com/Derovi/JavaBSU2021/blob/master/lab-03-zhabdex/TASK.md
 
-Условие: https://github.com/Derovi/JavaBSU2021/blob/master/lab-01-quizer/TASK.md
+#### Первая часть.
+
+**`Soft deadline: 18.10.2021, 23:59`**
+
+**`Hard deadline: 21.10.2021, 23:59`**
+
+
+### Домашнее задание №2. Quizer app
+Условие: https://github.com/Derovi/JavaBSU2021/blob/master/lab-02-quizer-app/TASK.md
+
+**`Soft deadline: 14.10.2021, 23:59`**
+
+**`Hard deadline: 17.10.2021, 23:59`**
+
+### Домашнее задание №1. Quizer library
+
+Условие: https://github.com/Derovi/JavaBSU2021/blob/master/lab-01-quizer-lib/TASK.md
 
 **`Soft deadline: 19.09.2021, 23:59`**
 
