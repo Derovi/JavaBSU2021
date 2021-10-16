@@ -1,0 +1,7 @@
+.gradle
+.idea
+build
+gradle
+gradlew
+gradlew.bat
+src/main/java/by/zhabdex/monitoring/*
