@@ -199,7 +199,7 @@ public interface ProcessedCollection<T, E> extends
 ##### Пример
 
 ```java
-FilteredCollection<Integer> collection 
+MappedCollection<Integer> collection 
         = new MappedCollection<>((Integer a) -> "Number is " + a.toString());
 
 collection.renew(List.of(4, 5, 6, 7));
