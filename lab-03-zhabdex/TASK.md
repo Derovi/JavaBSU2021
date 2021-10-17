@@ -163,7 +163,7 @@ public interface FinalProcessedCollection<T, E> {
 ```java
 
 public interface ProcessedCollection<T, E> extends 
-        FinalProcessableCollection<T, Collection<? extends E>> {}
+        FinalProcessedCollection<T, Collection<? extends E>> {}
 ```
 
 Будем называть все наши "умные" коллекции `processed collection`. Для такого не очень просто придумать название, так что можете предлагать идеи.
