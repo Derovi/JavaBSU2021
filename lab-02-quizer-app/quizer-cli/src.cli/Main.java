@@ -1,11 +1,17 @@
-package by.polchernikova.quizer;
+import by.polchernikova.quizer.Quiz;
+import by.polchernikova.quizer.exceptions.InvalidTestNameException;
+import by.polchernikova.quizer.task.math_tasks.EquationMathTask;
+import by.polchernikova.quizer.task.math_tasks.ExpressionMathTask;
+import by.polchernikova.quizer.task.math_tasks.MathTask;
+import by.polchernikova.quizer.task_generators.GroupTaskGenerator;
+import by.polchernikova.quizer.task_generators.PoolTaskGenerator;
 
-import by.polchernikova.quizer.task_generators.*;
-import by.polchernikova.quizer.task.math_tasks.*;
-import by.polchernikova.quizer.exceptions.*;
-import java.util.*;
+import java.util.EnumSet;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
 
-public class MathQuiz {
+public class Main {
     static Map<String, Quiz> getQuizMap() {
         Map<String, Quiz> quizMap = new HashMap<String, Quiz>();
         EquationMathTask.Generator easy_equation_gen = new EquationMathTask.Generator(1, 5, EnumSet.of(MathTask.Operation.SUM, MathTask.Operation.DIFFERENCE), 0);
@@ -33,16 +39,17 @@ public class MathQuiz {
 
         return quizMap;
     }
+
     public static void main(String[] args) throws Exception {
         System.out.println("Enter test name...");
         Scanner reader = new Scanner(System.in);
         String testName = reader.nextLine();
-        Map<String, Quiz> quiz_map= getQuizMap();
+        Map<String, Quiz> quiz_map = getQuizMap();
         Quiz test = quiz_map.get(testName);
-        if(test == null) {
+        if (test == null) {
             throw new InvalidTestNameException("No such test");
         }
-        while(!test.isFinished()) {
+        while (!test.isFinished()) {
             System.out.println(test.nextTask().getText());
             String answer = reader.nextLine();
             test.provideAnswer(answer);

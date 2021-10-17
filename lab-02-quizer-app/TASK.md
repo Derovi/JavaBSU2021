@@ -3,6 +3,8 @@
 Вам нужно оформить решение своей первой домашки как библиотеку и использовать ее, чтобы написать front-end для приложения. В build.gradle библиотеки нужно сделать задачу publish, которая будет вызываться при push в master при изменениях в этой библиотеки. Эта задача должна заливать библиотеку на github packages, а в репозитории фронта вы должны подключить эту библиотеку.
 
 ## Добавляем gradle
+Переименуйте директорию с вашей первой домашней работой `.../lab-01-quizer --> .../lab-01-quizer-lib`, добавьте туда gradle. Оформите код ввиде библиотеки, т.e. функция `public static void main()` там не нужна.
+
 Предварительно почитайте про основы gradle, чтобы вы смогли для себя ответить на базовые вопросы - 
 * Для чего нужны блоки `plugins`, `repositories`, `dependencies`, `test`?
 * Чем отличается `api`, `compile` и `implementation` в блоке `dependencies`?
@@ -25,8 +27,6 @@
 * Добавьте файл конфигурации build.gradle в проект.
 * Удалите ".idea" и "*.iml".
 * В Intellij Idea импортируйте проект, выбрав "Import Project..."
-
-
 
 ## А что мы сделали?
 
@@ -77,6 +77,12 @@ this.dependencies({
 ## Github packages
 Создайте задачу publish в build.gradle, которая будет паблишить вашу библиотеку в github packages. Потестируйте с разными версиями внутри build.gradle.
 
+
+## Github actions
+Настройте Github Actions так, чтобы при push в master вашего репозитория вызывалась задача publish, если были изменения в файлах (или файле build.gradle).
+
+## Используем библиотеку
+Создайте директорию `.../lab-02-quizer-app/quizer-cli` [cli - command line interface], и реализуйте там консольное приложение. По сути, там должен быть просто Main из вашей первой домашки, который не попал в quiz-library. Quiz-library подключите в dependencies через gradle так, чтобы получать его с github packages.
 **[Не получилось](https://letmegooglethat.com/?q=publishing+to+github+packages+with+gradle)**
 
 **[Все еще](https://github.com/Derovi/dismess/blob/master/build.gradle#L36)**
@@ -90,6 +96,7 @@ this.dependencies({
 
 ## Используем библиотеку
 Создайте директорию `.../lab-02-quizer-app/quizer-cli` [cli - command line interface], и реализуйте там консольное приложение. По сути, там должен быть просто Main из вашей первой домашки, который не попал в quiz-library. Quiz-library подключите в dependencies через gradle так, чтобы получать его с github packages. Другими словами, функцианально тут должно получиться то, что у вас было в первой домашке.
+
 
 ## Приложение на Swing
 Создайте директорию `.../lab-02-quizer-app/quizer-swing`, и реализуйте там оконное приложение. После запуска показывается список доступных тестов, пользователю нужно ввести название теста, в конце теста отображается оценка и статистика.
