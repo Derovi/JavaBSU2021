@@ -302,9 +302,9 @@ collection.currentState().forEach(System.out::println);
 
 #### SortedCollection
 
-Конструктор 1 принимает `Comparator comparator`.
-Конструктор 2 принимаает `Function keyExtractor` - функцию, которая извлекает из исходного объекта ключ и сравнивает по нему (см. Пример 1)
-Конструктор 3 принимает `Function keyExtractor` и `bool reversed` - нужно ли сортировать в обратном порядке.
+* Конструктор 1 принимает `Comparator comparator`.
+* Конструктор 2 принимаает `Function keyExtractor` - функцию, которая извлекает из исходного объекта ключ и сравнивает по нему (см. Пример 1)
+* Конструктор 3 принимает `Function keyExtractor` и `bool reversed` - нужно ли сортировать в обратном порядке.
 
 ##### Пример 1
 
