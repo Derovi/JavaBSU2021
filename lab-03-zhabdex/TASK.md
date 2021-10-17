@@ -387,7 +387,7 @@ System.out.println(collection.currentState());
 ##### Пример
 ```java 
 var collection =
-    new SortedCollection<>(Service::getRequestsForUptime).concat(
+    new SortedCollection<>(Service::getRequestsForUptime).compose(
     new TableViewCollection<>("Test", List.of(
             TableViewCollection.ColumnProvider.of("Name", Service::getName),
             TableViewCollection.ColumnProvider.of("Data center", Service::getDataCenter),
