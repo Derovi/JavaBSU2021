@@ -1,0 +1,5 @@
+rootProject.name = 'ServiceMonitoring'
+
+include 'common'
+include 'emulator'
+include 'visualizer'
