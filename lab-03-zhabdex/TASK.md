@@ -32,7 +32,7 @@
 
 У вас должно получиться примерно следующее:
 
-![Главный офис компании Zhabdex](
+![Zhabdex monitoring](
 https://i.ibb.co/ZhXHhHt/zhabdex.gif)
 
 #### Инструменты
@@ -147,6 +147,7 @@ while (true) {
 * Мы лишь 1 раз задаем весь pipe-line обработки данных, а не делаем это каждый раз когда обновились данные. Иногда это очень удобно.
 * Если данные обновляются не полностью, а частично, можно проводить некоторые оптимизации и не пересчитывать то, что не надо.
 * Например, если мы считаем средний ping по датацентрам, у нас обновилась информация только о 4 сервисах из 1000, можно решить задачу 4x операций, а не 1000x.
+* Эту систему коллекций можно расширять, когда в stream api ограниченный набор функций. 
 
 ### Базовые интерфейсы
 
@@ -199,7 +200,7 @@ public interface ProcessedCollection<T, E> extends
 ##### Пример
 
 ```java
-FilteredCollection<Integer> collection 
+MappedCollection<Integer> collection 
         = new MappedCollection<>((Integer a) -> "Number is " + a.toString());
 
 collection.renew(List.of(4, 5, 6, 7));
@@ -235,6 +236,26 @@ collection.currentState().forEach(System.out::println);
 */
 ```
 
+#### LimitedCollection
+
+Конструктор принимает `long maxSize` - максимальное количество элементов в коллекции.
+
+##### Пример
+
+```java
+LimitedCollection<Integer> collection
+        = new LimitedCollection<>(2);
+
+collection.renew(List.of(4, 5, 6, 7));
+collection.currentState().forEach(System.out::println);
+
+/**
+Вывод:
+    4
+    5
+*/
+```
+
 #### ReducedCollection
 
 Конструктор принимает `BinaryOperator<T> reducer` - функция, которая принимает два аргумента и возвращает результат выполнения операции над ними. Например, для нахождения суммы всех чисел следует использовать `(x, y) -> x + y`.
@@ -257,25 +278,8 @@ System.out.println(collection.currentState().get());
 */
 ```
 
-#### LimitedCollection
-
-Конструктор принимает `long maxSize` - максимальное количество элементов в коллекции.
-
-##### Пример
-
-```java
-LimitedCollection<Integer> collection
-        = new LimitedCollection<>(2);
-
-collection.renew(List.of(4, 5, 6, 7));
-collection.currentState().forEach(System.out::println);
-
-/**
-Вывод:
-    4
-    5
-*/
-```
+##### Помощь
+Скорее всего, вы попробовали вызвать функцию `reduce` из **streamapi** на *Collection<? extends T>* и передали туда оператор *BiOperator<? extends T>*. Обдумайте, почему это не может скомпилироваться и найдите решение. Проблема возникает при подстановке в реализацию `reduce` типа *? extends T*. Если сразу не очевидно, попробуйте реализовать свой *reduce* и найти в нем логическую ошибку при подстановке типа *? extends T*. После решения проблемы, оставьте там комментарий, который объясняет проблему и ее решение.
 
 #### ReversedCollection
 
@@ -298,13 +302,114 @@ collection.currentState().forEach(System.out::println);
 
 #### SortedCollection
 
-_Comming soon_
+Конструктор 1 принимает `Comparator comparator`.
+Конструктор 2 принимаает `Function keyExtractor` - функцию, которая извлекает из исходного объекта ключ и сравнивает по нему (см. Пример 1)
+Конструктор 3 принимает `Function keyExtractor` и `bool reversed` - нужно ли сортировать в обратном порядке.
+
+##### Пример 1
+
+```java
+SortedCollection<Service> collection 
+        = new SortedCollection<>(Service::getNodesCount);
+
+collection.renew(fetchServices());
+collection.currentState().forEach(service -> System.out.println(service.getNodesCount()));
+
+/**
+Вывод:
+    10
+    27
+    96
+*/
+```
+
+##### Пример 2
+
+```java
+SortedCollection<Service> collection
+        = new SortedCollection<>((first, second) -> second.getNodesCount() - first.getNodesCount());
+
+collection.renew(fetchServices());
+collection.currentState().forEach(service -> System.out.println(service.getNodesCount()));
+
+/**
+Вывод:
+    96
+    27
+    10
+*/
+```
 
 ### Юнит тесты
-Для всех коллекций сделайте хотя бы по несколько (одному) простых тестов
+Для всех коллекций сделайте хотя бы по несколько (одному) простых тестов.
 
 ### Объединение коллекций
-_Comming soon_
+
+Мы разработали крутые коллекции, но что, если нужно поддерживать суммарное количество Node в 3 сервисах с самым большим RPS? Для этого нужно научиться объединять коллекции.
+
+В `ProcessableCollection` добавьте **default** функцию `compose`, которая будет принимать другой `ProcessableCollection` и возвращать их "объединенную версию". Обозначим эти коллекции как **A** и **B**, т. e. функция `compose` действут следующим образом: **A**.compose(**B**). Результатом этой функции должна быть коллекция **C**, которая имеет такой же вход, как **A**, а выход как **B**. Т.e. если бы мы рассматривали **A** и **B** как функции, то **C** была бы их композицией - **C(t) = B(A(t))**
+
+Аналогичным образом добавьте в `ProcessableCollection` функцию `compose`, которая принимает `FinalProcessableCollection`.
+
+**На FinalProcessableCollection вызвать функцию compose нельзя.**
+
+##### Пример
+
+Ищем суммарный rps в топ 3 сервисах по количеству node из датацентра "Chaplin".
+
+```java
+FinalProcessableCollection<Service, Optional<Long>> collection =
+        new FilteredCollection<Service>(service -> service.getDataCenter().equals("Chaplin")).concat(
+        new SortedCollection<>(Service::getNodesCount)).concat(
+        new LimitedCollection<>(3)).concat(
+        new MappedCollection<>(Service::getRequestsPerSecond)).concat(
+        new ReducedCollection<>(Long::sum));
+
+collection.renew(fetchServices());
+System.out.println(collection.currentState());
+
+/**
+Вывод:
+    407
+*/
+```
+
+
+### TableViewCollection
+
+Сделайте коллекцию `TableViewCollection implements FinalProcessableCollection`, которая будет превращать элементы в **Table** из библиотеки `visualizer`.
+
+Конструктор принимает `String tableName` - название таблицы, `List<ColumnProvider>` - информацию о колонках таблицы.
+
+`ColumnProvider` - nested class `TableViewCollection`. Его **приватный** конструктор принимает `String title` - название колонки и `Function fieldExtractor` - функцию, которая принимает объект коллекции и возвращает его поле. 
+Для конструирования `ColumnProvider` следует сделать **публичный** статический метод `of`, который будет вызывать **приватный** конструктор.
+
+##### Пример
+```java 
+var collection =
+    new SortedCollection<>(Service::getRequestsForUptime).concat(
+    new TableViewCollection<>("Test", List.of(
+            TableViewCollection.ColumnProvider.of("Name", Service::getName),
+            TableViewCollection.ColumnProvider.of("Data center", Service::getDataCenter),
+            TableViewCollection.ColumnProvider.of("Ping", Service::getAveragePing),
+            TableViewCollection.ColumnProvider.of("Available nodes", Service::getNodesCount),
+            TableViewCollection.ColumnProvider.of("Requests/sec", Service::getRequestsPerSecond),
+            TableViewCollection.ColumnProvider.of("Started time", Service::getStartedTime),
+            TableViewCollection.ColumnProvider.of("Current time", Service::getCurrentTime)
+        ))
+    );
+
+collection.renew(fetchServices());
+
+TerminalRenderer renderer = TerminalRenderer.init(1);
+renderer.render(List.of(collection.currentState()));
+```
+
+##### Результат
+
+![Zhabdex monitoring](
+https://i.ibb.co/ZhXHhHt/zhabdex.gif)
+
 
 ### Используем библиотеку
 _Comming soon..._
