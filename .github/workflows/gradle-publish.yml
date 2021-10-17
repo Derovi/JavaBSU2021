@@ -5,7 +5,7 @@ name: Gradle Package
 
 on:
   push:
-    branches: [dz-02]
+    branches: [master]
 
 env:
   ACTOR_NAME: ${{ secrets.ACTOR_NAME }}
