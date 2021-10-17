@@ -359,11 +359,11 @@ collection.currentState().forEach(service -> System.out.println(service.getNodes
 
 ```java
 FinalProcessableCollection<Service, Optional<Long>> collection =
-        new FilteredCollection<Service>(service -> service.getDataCenter().equals("Chaplin")).compose(
-        new SortedCollection<>(Service::getNodesCount)).compose(
-        new LimitedCollection<>(3)).compose(
-        new MappedCollection<>(Service::getRequestsPerSecond)).compose(
-        new ReducedCollection<>(Long::sum));
+        new FilteredCollection<Service>(service -> service.getDataCenter().equals("Chaplin"))
+        .compose(new SortedCollection<>(Service::getNodesCount))
+        .compose(new LimitedCollection<>(3))
+        .compose(new MappedCollection<>(Service::getRequestsPerSecond))
+        .compose(new ReducedCollection<>(Long::sum));
 
 collection.renew(fetchServices());
 System.out.println(collection.currentState());
