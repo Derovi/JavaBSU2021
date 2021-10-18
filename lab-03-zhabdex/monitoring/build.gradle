@@ -11,7 +11,7 @@ repositories {
 }
 
 application {
-    mainClass = 'by.zhabdex.monitoring.Main'
+    mainClass = 'java.Main'
 }
 
 dependencies {
