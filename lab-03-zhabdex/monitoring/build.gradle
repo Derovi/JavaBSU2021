@@ -11,7 +11,7 @@ repositories {
 }
 
 application {
-    mainClass = 'java.Main'
+    mainClass = 'java.processed_collectiona.Main'
 }
 
 dependencies {
