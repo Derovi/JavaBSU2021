@@ -347,18 +347,18 @@ collection.currentState().forEach(service -> System.out.println(service.getNodes
 
 Мы разработали крутые коллекции, но что, если нужно поддерживать суммарное количество Node в 3 сервисах с самым большим RPS? Для этого нужно научиться объединять коллекции.
 
-В `ProcessableCollection` добавьте **default** функцию `compose`, которая будет принимать другой `ProcessableCollection` и возвращать их "объединенную версию". Обозначим эти коллекции как **A** и **B**, т. e. функция `compose` действут следующим образом: **A**.compose(**B**). Результатом этой функции должна быть коллекция **C**, которая имеет такой же вход, как **A**, а выход как **B**. Т.e. если бы мы рассматривали **A** и **B** как функции, то **C** была бы их композицией - **C(t) = B(A(t))**
+В `ProcessedCollection` добавьте **default** функцию `compose`, которая будет принимать другой `ProcessedCollection` и возвращать их "объединенную версию". Обозначим эти коллекции как **A** и **B**, т. e. функция `compose` действут следующим образом: **A**.compose(**B**). Результатом этой функции должна быть коллекция **C**, которая имеет такой же вход, как **A**, а выход как **B**. Т.e. если бы мы рассматривали **A** и **B** как функции, то **C** была бы их композицией - **C(t) = B(A(t))**
 
-Аналогичным образом добавьте в `ProcessableCollection` функцию `compose`, которая принимает `FinalProcessableCollection`.
+Аналогичным образом добавьте в `ProcessedCollection` функцию `compose`, которая принимает `FinalProcessedCollection`.
 
-**На FinalProcessableCollection вызвать функцию compose нельзя.**
+**На FinalProcessedCollection вызвать функцию compose нельзя.**
 
 ##### Пример
 
 Ищем суммарный rps в топ 3 сервисах по количеству node из датацентра "Chaplin".
 
 ```java
-FinalProcessableCollection<Service, Optional<Long>> collection =
+FinalProcessedCollection<Service, Optional<Long>> collection =
         new FilteredCollection<Service>(service -> service.getDataCenter().equals("Chaplin"))
         .compose(new SortedCollection<>(Service::getNodesCount))
         .compose(new LimitedCollection<>(3))
@@ -377,7 +377,7 @@ System.out.println(collection.currentState());
 
 ### TableViewCollection
 
-Сделайте коллекцию `TableViewCollection implements FinalProcessableCollection`, которая будет превращать элементы в **Table** из библиотеки `visualizer`.
+Сделайте коллекцию `TableViewCollection implements FinalProcessedCollection`, которая будет превращать элементы в **Table** из библиотеки `visualizer`.
 
 Конструктор принимает `String tableName` - название таблицы, `List<ColumnProvider>` - информацию о колонках таблицы.
 
