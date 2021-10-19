@@ -21,6 +21,6 @@ public class MappedCollection<T, E> implements ProcessedCollection<T, E> {
         return elements.values();
     }
 
-    Map<T, E> elements;
-    Function<T, E> mapper;
+    private Map<T, E> elements;
+    private Function<T, E> mapper;
 }

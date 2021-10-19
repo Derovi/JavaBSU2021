@@ -4,24 +4,28 @@ import by.zhabdex.common.Service;
 import by.zhabdex.common.Tools;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.util.JSONPObject;
+import processed_collections.*;
 
 import java.net.*;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 public class Main {
-    public static void main(String[] args) throws IOException, InterruptedException {
-        TerminalRenderer renderer = TerminalRenderer.init(1);
+    public static List<Service> fetchServices() throws IOException {
         URL url = new URL("http://zhabdex.ovi.by/status");
         HttpURLConnection con = (HttpURLConnection) url.openConnection();
         con.setRequestMethod("GET");
+        return Tools.JSON.readValue(url, new TypeReference<List<Service>>() {});
+    }
+
+    public static void displayZhabdexState() throws IOException, InterruptedException {
+        TerminalRenderer renderer = TerminalRenderer.init(1);
         while (true) {
             Table table = new Table("Monitor");
             table.addRow("Name", "Data Center", "Ping", "Available nodes", "Requests/sec", "Started time", "Current time");
-            List<Service> services = Tools.JSON.readValue(url, new TypeReference<List<Service>>() {
-            });
-            for (Service service : services) {
+            for (Service service : fetchServices()) {
                 table.addRow(service.getName(),
                         service.getDataCenter(),
                         Long.toString(service.getAveragePing()),
@@ -33,5 +37,27 @@ public class Main {
             renderer.render(List.of(table));
             Thread.sleep(1000);
         }
+    }
+
+    public static void tableViewCollectionTest() throws IOException {
+        FinalProcessedCollection<Service, Table> collection =
+                new TableViewCollection<>("Test", List.of(
+                        TableViewCollection.ColumnProvider.of("Name", Service::getName),
+                        TableViewCollection.ColumnProvider.of("Data center", Service::getDataCenter),
+                        TableViewCollection.ColumnProvider.of("Ping", Service::getAveragePing),
+                        TableViewCollection.ColumnProvider.of("Available nodes", Service::getNodesCount),
+                        TableViewCollection.ColumnProvider.of("Requests/sec", Service::getRequestsPerSecond),
+                        TableViewCollection.ColumnProvider.of("Started time", Service::getStartedTime),
+                        TableViewCollection.ColumnProvider.of("Current time", Service::getCurrentTime)
+                ));
+
+        collection.renew(fetchServices());
+
+        TerminalRenderer renderer = TerminalRenderer.init(1);
+        renderer.render(List.of(collection.currentState()));
+    }
+
+    public static void main(String[] args) throws IOException, InterruptedException {
+
     }
 }

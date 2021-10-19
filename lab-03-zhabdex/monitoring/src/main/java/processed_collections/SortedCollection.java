@@ -41,8 +41,8 @@ public class SortedCollection<T, F extends Comparable<F>> implements ProcessedCo
         return elements;
     }
 
-    boolean reversed;
-    Collection<? extends T> elements;
-    Optional<Comparator<? super T>> comparator;
-    Optional<Function<T, F>> keyExtractor;
+    private boolean reversed;
+    private Collection<? extends T> elements;
+    private Optional<Comparator<? super T>> comparator;
+    private Optional<Function<T, F>> keyExtractor;
 }

@@ -17,6 +17,6 @@ public class LimitedCollection<T> implements ProcessedCollection<T, T> {
         return elements;
     }
 
-    Collection<? extends T> elements;
-    int maxSize;
+    private Collection<? extends T> elements;
+    private int maxSize;
 }

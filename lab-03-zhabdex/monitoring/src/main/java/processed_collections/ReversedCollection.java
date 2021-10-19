@@ -14,5 +14,5 @@ public class ReversedCollection<T> implements ProcessedCollection<T, T> {
         return elements;
     }
 
-    ArrayList<? extends T> elements;
+    private ArrayList<? extends T> elements;
 }

@@ -19,6 +19,6 @@ public class FilteredCollection<T> implements ProcessedCollection<T, T> {
         return elements;
     }
 
-    Predicate<T> predicate;
-    Collection<? extends T> elements;
+    private Predicate<T> predicate;
+    private Collection<? extends T> elements;
 }
