@@ -1,10 +1,6 @@
 package processed_collections;
 
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Optional;
+import java.util.*;
 import java.util.function.Function;
 
 public class SortedCollection<T, F extends Comparable<F>> implements ProcessedCollection<T, T> {
@@ -28,11 +24,11 @@ public class SortedCollection<T, F extends Comparable<F>> implements ProcessedCo
     }
     @Override
     public void renew(Collection<? extends T> elements) {
-        this.elements = elements;
+        this.elements = new ArrayList<>(elements);
         if(comparator.isPresent()) {
-            Collections.sort(Arrays.asList(), comparator.get());
+            Collections.sort(this.elements, comparator.get());
         } else if (keyExtractor.isPresent()) {
-            Collections.sort(Arrays.asList(), Comparator.comparing((T t) -> keyExtractor.get().apply(t)));
+            Collections.sort(this.elements, Comparator.comparing((T t) -> keyExtractor.get().apply(t)));
         }
     }
 
@@ -42,7 +38,7 @@ public class SortedCollection<T, F extends Comparable<F>> implements ProcessedCo
     }
 
     private boolean reversed;
-    private Collection<? extends T> elements;
+    private ArrayList<? extends T> elements;
     private Optional<Comparator<? super T>> comparator;
     private Optional<Function<T, F>> keyExtractor;
 }

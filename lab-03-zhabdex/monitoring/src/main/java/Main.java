@@ -57,7 +57,17 @@ public class Main {
         renderer.render(List.of(collection.currentState()));
     }
 
-    public static void main(String[] args) throws IOException, InterruptedException {
+    public static void ComposeTest() throws IOException {
+        var collection =
+                new FilteredCollection<Integer>(a -> a > 2)
+                        .compose(new SortedCollection<>(a->a)).compose(new LimitedCollection<>(3))
+                        .compose(new ReducedCollection<>(Integer::sum));
 
+        collection.renew(List.of(3, 4, 1, 9, 9, 0));
+        System.out.println(collection.currentState());
+    }
+
+    public static void main(String[] args) throws IOException {
+        ComposeTest();
     }
 }

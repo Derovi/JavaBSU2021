@@ -1,6 +1,7 @@
 package processed_collections;
 
 import java.util.Collection;
+import java.util.stream.Collectors;
 
 public class LimitedCollection<T> implements ProcessedCollection<T, T> {
 
@@ -9,7 +10,7 @@ public class LimitedCollection<T> implements ProcessedCollection<T, T> {
     }
     @Override
     public void renew(Collection<? extends T> elements) {
-        this.elements = elements.stream().toList().subList(0, this.maxSize);
+        this.elements = elements.stream().limit(maxSize).collect(Collectors.toList());
     }
 
     @Override

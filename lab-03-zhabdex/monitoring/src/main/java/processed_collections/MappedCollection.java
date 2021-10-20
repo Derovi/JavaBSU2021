@@ -7,20 +7,20 @@ import java.util.stream.Collectors;
 
 public class MappedCollection<T, E> implements ProcessedCollection<T, E> {
 
-    public MappedCollection(Function mapper) {
+    public MappedCollection(Function<T, E> mapper) {
         this.mapper = mapper;
     }
 
     @Override
     public void renew(Collection<? extends T> elements) {
-        this.elements = elements.stream().collect(Collectors.toMap((T el) -> el, mapper));
+        this.elements = elements.stream().map(mapper).collect(Collectors.toList());
     }
 
     @Override
     public Collection<? extends E> currentState() {
-        return elements.values();
+        return elements;
     }
 
-    private Map<T, E> elements;
+    private Collection<E> elements;
     private Function<T, E> mapper;
 }
