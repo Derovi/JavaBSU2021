@@ -412,19 +412,19 @@ https://i.ibb.co/ZhXHhHt/zhabdex.gif)
 
 ### GroupingCollection
 
-Сделайте коллекцию `GroupingCollection implements ProcessableCollection<T, Map.Entry<? extends K, ? extends List<? extends T>>>`, которая будет группировать элементы по какому-то общему признаку.
+Сделайте коллекцию `GroupingCollection implements ProcessedCollection<T, Map.Entry<? extends K, ? extends List<? extends T>>>`, которая будет группировать элементы по какому-то общему признаку.
 
-Конструктор принимает `Function classifier<? super T, ? extends K>`.
+Конструктор принимает `Function <? super T, ? extends K> classifier`.
 
 ##### Пример
 ```java 
 var collection =
-    new AggregatedCollection<>(Service::getDataCenter)
-        .concat(
+    new GroupingCollection<>(Service::getDataCenter)
+        .compose(
             new MappedCollection<>(
                 entry -> new AbstractMap.SimpleEntry<>(entry.getKey(), entry.getValue().stream().mapToLong(Service::getRequestsPerSecond).sum())
             )
-        ).concat(
+        ).compose(a
             new TableViewCollection<>("Summary ping", List.of(
                 TableViewCollection.ColumnProvider.of("Name", Map.Entry::getKey),
                 TableViewCollection.ColumnProvider.of("Available nodes", Map.Entry::getValue)
