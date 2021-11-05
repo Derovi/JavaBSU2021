@@ -12,8 +12,6 @@ public class ReducedCollection<T> implements FinalProcessedCollection<T, Optiona
 
     @Override
     public void renew(Collection<? extends T> elements) {
-        // бог знает почему он не хотел примернять BinaryOperator<T> к типу <? extends T>
-        // но привести въявную к типу <T>, естественно, проблему решило
         reducedCollection = elements.isEmpty() ? Optional.empty() : ((Collection<T>)elements).stream().reduce(reducer);
     }
 
