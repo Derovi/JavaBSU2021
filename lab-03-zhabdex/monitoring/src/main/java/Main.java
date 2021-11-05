@@ -4,6 +4,9 @@ import by.zhabdex.common.Service;
 import by.zhabdex.common.Tools;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.util.JSONPObject;
+import monitoring_lib.ClassMonitoringScanner;
+import monitoring_lib.ContainerMonitoringScanner;
+import monitoring_lib.MonitoringApplication;
 import processed_collections.*;
 
 import java.net.*;
@@ -67,7 +70,13 @@ public class Main {
         System.out.println(collection.currentState());
     }
 
-    public static void main(String[] args) throws IOException {
-        ComposeTest();
+    public static void main(String[] args) throws IOException, InterruptedException {
+        MonitoringApplication
+                .builder()
+                .setPackage("monitoring_lib")
+                .setServiceURL("http://zhabdex.ovi.by/status")
+                .addScanner(new ClassMonitoringScanner())
+                .addScanner(new ContainerMonitoringScanner())
+                .start();
     }
 }
