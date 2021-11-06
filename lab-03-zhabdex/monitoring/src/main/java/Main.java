@@ -12,7 +12,9 @@ import processed_collections.*;
 import java.net.*;
 import java.io.IOException;
 import java.time.LocalDateTime;
+import java.util.AbstractMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 public class Main {
@@ -68,6 +70,25 @@ public class Main {
 
         collection.renew(List.of(3, 4, 1, 9, 9, 0));
         System.out.println(collection.currentState());
+    }
+
+    public static void GroupingTest() throws IOException {
+        var collection =
+                new GroupingCollection<>(Service::getDataCenter)
+                        .compose(
+                                new MappedCollection<>(
+                                        entry -> new AbstractMap.SimpleEntry<>(entry.getKey(), entry.getValue().stream().mapToLong(Service::getRequestsPerSecond).sum())
+                                )
+                        ).compose(
+        new TableViewCollection<>("Summary ping", List.of(
+                TableViewCollection.ColumnProvider.of("Name", Map.Entry::getKey),
+                TableViewCollection.ColumnProvider.of("Available nodes", Map.Entry::getValue)
+        ))
+        );
+        collection.renew(fetchServices());
+
+        TerminalRenderer renderer = TerminalRenderer.init(1);
+        renderer.render(List.of(collection.currentState()));
     }
 
     public static void main(String[] args) throws IOException, InterruptedException {
