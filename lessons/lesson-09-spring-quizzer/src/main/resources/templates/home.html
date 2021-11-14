@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Homepage</title>
+    <link rel="stylesheet" href="https://fonts.xz.style/serve/inter.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css">
+</head>
+<body>
+
+<h2 th:text="|Hi, ${login}|"> </h2>
+
+<a href="/quiz">Start quiz</a>
+
+<form action="/logout" method="post">
+    <input type="submit" value="Logout">
+</form>
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <style>
+        table {
+            border-collapse:collapse
+        }
+        td, tr {
+            padding: 5px;
+            border: solid black 1px;
+        }
+    </style>
+
+    <title>Heroes</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>Hero Name</td>
+            <td>Legs</td>
+            <td>Picture</td>
+        </tr>
+        <tr th:each="hero : ${heroes}">
+            <td th:text="${hero.localizedName}"/>
+            <td><img th:each="i: ${#numbers.sequence(0, hero.legs - 1)}" th:src="|https://api.opendota.com${hero.icon}|"/></td>
+            <td><img width="100px" th:src="|https://api.opendota.com${hero.image}|"/></td>
+        </tr>
+    </table>
+</body>
+</html>

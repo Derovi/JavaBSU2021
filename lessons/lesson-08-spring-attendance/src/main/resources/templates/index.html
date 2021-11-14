@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form action="/" method="get">
+    <label>
+        Search:
+        <input type="text" name="query" />
+    </label>
+    <input type="submit" />
+</form>
+
+<ul>
+    <li th:each="student: ${students}"
+        th:text="|${student.name} missed ${student.missedLessons} lessons|"></li>
+</ul>
+
+<a href="/add">Add new student</a>
+
+
+</body>
+</html>

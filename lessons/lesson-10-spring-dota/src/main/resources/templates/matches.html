@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Matches</title>
+</head>
+<body>
+<table>
+    <tr>
+        <td>ffffff</td>
+    </tr>
+    <tr th:each="match : ${matches}">
+        <td><a th:href="|/matches/${match.id}|" th:text="${match.id}"/></td>
+    </tr>
+</table>
+</body>
+</html>
