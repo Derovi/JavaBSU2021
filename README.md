@@ -26,7 +26,12 @@
 
 ## Домашние задания
 
-### Домашнее задание №3. 
+### Домашнее задание №4. Мини-проект на Spring.
+Условие: https://github.com/Derovi/JavaBSU2021/blob/master/lab-04-spring/README.md
+
+**`Deadline: 25.11.2021, 8:15`** - демонстрация на паре.
+
+### Домашнее задание №3. Zhabdex.
 Условие: https://github.com/Derovi/JavaBSU2021/blob/master/lab-03-zhabdex/TASK.md
 
 #### Первая часть.
