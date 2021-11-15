@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        table {
+            border-collapse:collapse
+        }
+        td, tr {
+            padding: 5px;
+            border: solid black 1px;
+        }
+    </style>
+
+</head>
+<body>
+
+<table>
+    <tr>
+        <td>Name</td>
+        <td>Mark</td>
+    </tr>
+    <tr th:each="entry : ${results}">
+        <td th:text="${entry.getLogin()}"></td>
+        <td th:text="${entry.getMark() * 10}"></td>
+    </tr>
+</table>
+
+</body>
+</html>

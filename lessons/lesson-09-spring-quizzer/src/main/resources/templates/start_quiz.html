@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+Select a new quizz sir
+
+<form action="/quiz/start" method="post">
+    <label>Select quiz:</label>
+    <select name="select">
+        <option th:each="variant: ${names}" th:value="${variant}"
+                th:text="${variant}">
+    </select>
+    <input type="submit">
+</form>
+
+</body>
+</html>

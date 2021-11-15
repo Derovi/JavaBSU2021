@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .container {
+            margin: auto;
+            min-width: 70vw;
+            background: aliceblue;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<!--
+login = user name
+task = current task
+quizName
+-->
+
+<div class="container">
+    <b th:if="${message != null}" th:text="${message}"></b>
+    <br>
+    <b th:text="|Hello ${login} youre playin now ${quizName}|"></b>
+    <p>
+        The question is:
+    </p>
+    <br>
+    <b th:text="${task.getText()}"></b>
+    <form action="/quiz/answer" method="post">
+        <input type="text" name="answer">
+        <input type="submit">
+    </form>
+</div>
+
+</body>
+</html>
