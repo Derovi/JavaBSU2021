@@ -1,9 +1,11 @@
 package com.Khody31.selfdrivingdatabase.model;
 
 import lombok.*;
+import net.bytebuddy.utility.dispatcher.JavaDispatcher;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @Getter
@@ -18,4 +20,7 @@ public class Ride {
 
     String location;
     String carName;
+
+    @OneToMany
+    List<Maneuver> maneuverList;
 }

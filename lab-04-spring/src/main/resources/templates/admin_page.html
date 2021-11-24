@@ -1,10 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>AdminPage</title>
 </head>
 <body>
+
+<table>
+    <tr th:each="maneuver: ${maneuvers}">
+        <td>
+            <a th:text="${maneuver.getName()}"></a>
+        </td>
+        <td>
+            <a th:text="${maneuver.getDuration()}"></a>
+        </td>
+    </tr>
+</table>
+
+<form action="\add_maneuver" method = post>
+    <label>
+        Which maneuver do you want to add?
+        <input type="text" name="name" id = "name">
+    </label>
+    <label>
+        How long did the maneuver last?
+        <input type="number" name="duration" id="duration">
+    </label>
+    <input type="submit" value="Add maneuver">
+</form>
 
 <form action="\add_ride" method = post>
     <label>
