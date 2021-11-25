@@ -23,6 +23,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/admin").hasRole("ADMIN")
                 .antMatchers("/add_ride").hasRole("ADMIN")
                 .antMatchers("/add_maneuver").hasRole("ADMIN")
+                .antMatchers("/clear").hasRole("ADMIN")
                 .and()
                 .formLogin()
                 .permitAll()
@@ -37,8 +38,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public UserDetailsService userDetailsService() {
         UserDetails user =
                 User.withDefaultPasswordEncoder()
-                        .username("admin")
-                        .password("password")
+                        .username("roman")
+                        .password("moysaonelove")
                         .roles("ADMIN")
                         .build();
 
