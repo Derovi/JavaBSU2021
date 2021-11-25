@@ -3,10 +3,8 @@ package com.Khody31.selfdrivingdatabase.model;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Data
 @Entity
@@ -18,4 +16,12 @@ public class Maneuver {
 
     Integer duration;
     String name;
+
+    Double averageScore;
+    Integer scoreCnt;
+
+    public void addScore(double score) {
+        averageScore = (averageScore * scoreCnt + score) / (scoreCnt + 1);
+        scoreCnt += 1;
+    }
 }

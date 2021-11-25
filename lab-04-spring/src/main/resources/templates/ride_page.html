@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>RidePage</title>
+    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
+</head>
+<body>
+
+<table>
+    <tr th:each="ride: ${rides}">
+        <td>
+            <label>
+                Maneuvers: <br>
+            </label>
+
+            <table>
+                <tr th:each="maneuver: ${ride.getManeuverList()}">
+                    <td>
+                        <label>
+                            Type:
+                            <text th:text="${maneuver.getName()}"></text>
+                        </label>
+                        <label>
+                            Duration:
+                            <text th:text="${maneuver.getDuration()}"></text>
+                        </label>
+                        <label>
+                            Average Rate:
+                            <text th:text="${maneuver.getAverageScore()}"></text>
+                        </label>
+                        <label>
+                            Number of rates:
+                            <text th:text="${maneuver.getScoreCnt()}"></text>
+                        </label>
+                        <form action="/rate" method="post">
+                            <label>
+                                Enter rating:
+                                <input type="range" name="score" id="score"/>
+                            </label>
+                            <input type="hidden" name="maneuverId" th:value="${maneuver.getId()}">
+                            <input type="hidden" name="rideId" th:value="${ride.getId()}">
+                            <input type="submit" value="Rate">
+                        </form>
+                    </td>
+                </tr>
+            </table>
+            <label>
+                Other information:
+                <br>
+            </label>
+            <label>
+                Car name:
+                <text th:text="${ride.getCarName()}"></text>
+            </label>
+
+            <form action="/add_comment" method="post" style="margin-top: 0; padding-top: 0">
+                <label>
+                    Place for your comment:) <br>
+                    <input type="text" name="commentBody" id="commentBody">
+                </label>
+                <input type="hidden" name="rideId" th:value="${ride.getId()}">
+                <input type="submit" value="Comment" style="margin-top: 0; height: min-content; width: min-content; padding: 0">
+            </form>
+
+            <form action="/" style="margin-top: 0; padding-top: 0">
+                <input type="submit" value="Back to main page" style="margin-top: 0; margin-left:10px;height: min-content; width: min-content; padding: 0">
+            </form>
+        </td>
+    </tr>
+</table>
+
+
+
+</body>
+</html>
