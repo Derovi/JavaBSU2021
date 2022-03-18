@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>MainPage</title>
+    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
+</head>
+<body>
+
+<label style="font-size:xxx-large">
+    Rides: <br>
+</label>
+
+<table>
+    <tr th:each="ride: ${rides}">
+        <td>
+            <form action="/ride" style="height:30px; width:90%">
+                <label>
+                    Name of the car:
+                    <text th:text="${ride.getCarName()}"></text>
+                    |
+                    Location:
+                    <text th:text="${ride.getLocation()}"></text>
+                    |
+                    Date:
+
+                    <text th:text="${ride.getDate()}"></text>
+                </label>
+
+                <input type="hidden" name="id" th:value="${ride.getId()}" th:id="${ride.getId()}">
+                <input type="submit" value="Go to ride's page"
+                       style="height: min-content; width: min-content; padding: 0">
+            </form>
+        </td>
+    </tr>
+</table>
+
+<form action="/admin" style="margin-bottom: 0">
+    <input type="submit" value="Add ride" style="height: min-content; margin-left:5px   ; width: min-content; padding: 0; margin-bottom: 10px">
+</form>
+<form action="/clear" method="post" style="margin-top: 0; padding-top: 0">
+    <input type="submit" value="Clear" style="margin-top: 0;margin-left:5px; height: min-content; width: min-content; padding: 0">
+</form>
+
+</body>
+</html>

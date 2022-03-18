@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>AdminPage</title>
+    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
+    <style>
+        body {
+            margin: 0;
+            font-size: xxx-large;
+        }
+
+        .parent {
+            margin-left: 5%;
+            margin-right: 5%;
+            padding: 10px;
+        }
+
+        .child {
+            padding: 10px;
+            margin: 10px;
+        }
+
+        .button {
+            height: min-content;
+            width: min-content;
+            padding: 0
+        }
+    </style>
+</head>
+<body>
+
+<div class="parent">
+
+    <label>
+        Maneuvers for current ride: <br>
+    </label>
+
+    <table>
+        <tr th:each="maneuver: ${maneuvers}">
+            <td>
+                <div class="child">
+                    <label>Maneuver type: </label>
+                    <a th:text="${maneuver.getName()}"></a>
+                </div>
+            </td>
+            <td>
+                <div class="child">
+
+                    <label>Maneuver duration: </label>
+                    <a th:text="${maneuver.getDuration()}"></a>
+                </div>
+            </td>
+        </tr>
+    </table>
+
+    <form action="/add_maneuver" method=post>
+        <label style="font-size: large">
+            Which maneuver do you want to add?<br>
+            <input type="text"
+                   name="name"
+                   id="name"
+                   style="
+                        height: min-content;
+                        width: 80%;
+                        padding: 5px"
+            >
+        </label>
+        <label>
+            How long did the maneuver last?<br>
+            <input type="number"
+                   name="duration"
+                   id="duration"
+                   style="
+                        height: min-content;
+                        width: 80%;
+                        padding: 5px"
+            >
+        </label>
+        <input type="submit"
+               value="Add Maneuver"
+               style="
+                    height: min-content;
+                    width: min-content;
+                    padding: 5px"
+        >
+    </form>
+
+    <form action="/add_ride" method=post>
+        <label>
+            Enter name of car:<br>
+            <input type="text"
+                   name="carName"
+                   id="carName"
+                   style="
+                        height: min-content;
+                        width: 80%;
+                        padding: 5px"
+            >
+            <br>
+            Enter location: <br>
+            <input type="text"
+                   name="location"
+                   id="location"
+                   style="
+                        height: min-content;
+                        width: 80%;
+                        padding: 5px"
+            >
+            <br>
+            Enter date: <br>
+            <input type="date"
+                   name="date"
+                   id="date"
+                   style="
+                        height: min-content;
+                        width: 80%;
+                        padding: 5px"
+            >
+        </label>
+
+        <input type="submit"
+               value="Add Ride"
+               style="
+               margin-left:5px;
+                    height: min-content;
+                    width: min-content;
+                    padding: 5px"
+        >
+    </form>
+
+    <form action="/" style="margin-top: 0; padding-top: 0">
+        <input type="submit" value="Back to main page" style="margin-top: 0; margin-left:5px;height: min-content; width: min-content; padding: 0">
+    </form>
+</div>
+
+</body>
+</html>
